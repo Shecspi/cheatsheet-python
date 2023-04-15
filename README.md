@@ -1,34 +1,35 @@
 # Типы данных
 
-## Классификация
-* Скалярные
-    * Числа
-    * Логический тип
-    * NoneType
-* Коллекции
-    * Последовательности
-        * Строка | str
-        * Список | list
-        * Кортеж | tuple
-        * Числовая последовательности | range
-    * Множества
-        * Множество | set
-        * Неизменяемое множество | frozenset
-    * Отображения
-        * Словарь | dict
+## Классификация по типу
+- Скалярные
+  - `Числа`
+  - `Логический тип`
+  - `NoneType`
+- Коллекции
+  - Последовательности
+    - `Строка | str`
+    - [`Список | list`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#список--list)
+    - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+    - `Числовая последовательности | range`
+  - Множества
+    - `Множество | set`
+    - `Неизменяемое множество | frozenset`
+  - Отображения
+    - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
 
-* Изменяемые
-    * Список | list
-    * Множество | set
-    * Словарь | dict
+## Классификация по изменяемости
+- Изменяемые
+  - [`Список | list`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#список--list)
+  - `Множество | set`
+  - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
 * Неизменяемые
-    * Числа
-    * Логический тип
-    * NoneType
-    * Строка | str
-    * Кортеж | tuple
-    * Числовая последовательности | range
-    * Неизменяемое множество | frozenset
+  - `Числа`
+  - `Логический тип`
+  - `NoneType`
+  - `Строка | str`
+  - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+  - `Числовая последовательности | range`
+  - `Неизменяемое множество | frozenset`
 
 ## Встроенные типы данных
 ### Список | List
