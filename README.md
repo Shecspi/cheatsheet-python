@@ -8,26 +8,26 @@
 - Коллекции
   - Последовательности
     - `Строка | str`
-    - [`Список | list`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#список--list)
-    - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+    - [`Список | list`](https://github.com/Shecspi/cheatsheet-python#список--list)
+    - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
     - `Числовая последовательности | range`
   - Множества
     - `Множество | set`
     - `Неизменяемое множество | frozenset`
   - Отображения
-    - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+    - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
 
 ## Классификация по изменяемости
 - Изменяемые
-  - [`Список | list`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#список--list)
+  - [`Список | list`](https://github.com/Shecspi/cheatsheet-python#список--list)
   - `Множество | set`
-  - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+  - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
 * Неизменяемые
   - `Числа`
   - `Логический тип`
   - `NoneType`
   - `Строка | str`
-  - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python/edit/master/README.md#кортеж--tuple)
+  - [`Кортеж | tuple`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
   - `Числовая последовательности | range`
   - `Неизменяемое множество | frozenset`
 
