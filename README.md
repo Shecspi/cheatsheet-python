@@ -15,13 +15,13 @@
     - `Множество | set`
     - `Неизменяемое множество | frozenset`
   - Отображения
-    - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
+    - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#словарь--dict)
 
 ## Классификация по изменяемости
 - Изменяемые
   - [`Список | list`](https://github.com/Shecspi/cheatsheet-python#список--list)
   - `Множество | set`
-  - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#кортеж--tuple)
+  - [`Словарь | dict`](https://github.com/Shecspi/cheatsheet-python#словарь--dict)
 * Неизменяемые
   - `Числа`
   - `Логический тип`
