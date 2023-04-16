@@ -211,3 +211,41 @@ some_codes = [
 cities = {str(number): city.upper() for number, city in some_codes}
 print(cities)
 ```
+
+---
+---
+
+### Сопоставление с образцом | match/case
+```python
+# Простое сопоставление
+message = 'hello'
+match message:
+    case 'hello':
+        print('Hello')
+    case 'wolrd':
+        print('World')
+    case _:
+        print('Error')
+
+# Сопоставление с распаковкой
+# Проверка сработает только при совпадении количества элементов
+message = ['hello', 'world', 1]
+match message:
+    case ['hello', second, third]:
+        print(second, third)
+
+# Распаковка вложенных кортежей и проверка по условию
+# Проверка сработает только при совпадении количества элементов
+# (включая вложенные) и корректности условия
+area = ('Moscow', 'Russia', (55.755864, 37.617698))
+match area:
+    case [city, country, (lat, lon)] if lat >= 55:
+        print(f'{city:7} | {lat:9.4f} | {lon:9.4f}')
+ 
+# Проверка типов при сопоставлении
+# Проверка сработает только при совпадении количества элементов и их типов
+area = ('Moscow', 'Russia', (55.755864, 37.617698))
+match area:
+    case [str(city), *_, (float(lat), float(lon))]:
+        print(f'{city:7} | {lat:9.4f} | {lon:9.4f}')
+```
