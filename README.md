@@ -249,3 +249,32 @@ match area:
     case [str(city), *_, (float(lat), float(lon))]:
         print(f'{city:7} | {lat:9.4f} | {lon:9.4f}')
 ```
+
+---
+---
+# Классы данных
+### collections.namedtuple
+`collections.namedtuple` - это фабрика, порождажющая подклассы `tuple`, дополненные возможностью задавать имена полей, имя класса и информативный метод `__repr__`. Экземпляры этого класса потребляют столько же памяти, сколько и кортежи, так как имена хранятся в определении класса.
+```python
+from collections import namedtuple
+
+# Первый параметр - имя класса
+# второй - перечисление полей в виде строки с пробелами или итерируемого объекта
+# `defaults` определяет значения по-умолчанию в порядке справа налево
+City = namedtuple('City', 'name country coordinates', defaults=[(35.689722, 139.691667)])
+tokyo = City('Tokyo', 'Japan')
+
+print(tokyo)  # Выведет "City(name='Tokyo', country='Japan', coordinates=(35.689722,  139.691667))"
+
+# К полям можно обращаться по имени
+print(tokyo.name, tokyo.country)  # 'Tokyo Japan'
+
+# И по смещению
+print(tokyo[0], tokyo[1])  # 'Tokyo Japan'
+
+# Возвращает кортеж, содержащий имена полей
+print(City._fields)  # ('name', 'country', 'coordinates')
+
+# _asdict() возвращает все поля в виде словаря
+print(tokyo._asdict())  # {'name': 'Tokyo', 'country': 'Japan', ... }
+```
