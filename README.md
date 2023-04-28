@@ -272,14 +272,18 @@ print(tokyo.name, tokyo.country)  # 'Tokyo Japan'
 # И по смещению
 print(tokyo[0], tokyo[1])  # 'Tokyo Japan'
 
-# Возвращает кортеж, содержащий имена полей
+# _fields возвращает кортеж, содержащий имена полей
 print(City._fields)  # ('name', 'country', 'coordinates')
+
+# _field_defaults возвращает словарь со значениями по-умолчанию
+print(City._field_defaults)  # {'coordinates': (35.689722, 139.691667)}
 
 # _asdict() возвращает все поля в виде словаря
 print(tokyo._asdict())  # {'name': 'Tokyo', 'country': 'Japan', ... }
 ```
 
 ### typing.NamedTuple
+`typing.NamedTuple` - типизированныя версия класса `collections.namedtuple`
 ```python
 from typing import NamedTuple
 
