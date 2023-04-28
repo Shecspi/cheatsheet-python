@@ -312,3 +312,33 @@ print(City.coordinates)  # (35.689722, 139.691667)
 city = City('Moscow')
 city.name = 'Kazan'  # AttributeError: can't set attribute
 ```
+
+### dataclass
+Все атрибуты датакласса являются изменяемыми, в отличие от `typing.NamedTuple` и `collections.namedtuple`.
+```python
+from dataclasses import dataclass
+
+@dataclass
+class City:
+    name: str
+    country: str = 'Russia'
+    coordinates = (35.689722, 139.691667)
+
+city = City('Moscow')
+print(City.__annotations__)  # {'name': <class 'str'>, 'country': <class 'str'>}
+
+# Поле `name` имеет аннотацию, но не становится атрибутом класса.
+# При этом в экземпларах класса оно будет, и его можно читать и записывать.
+print(City.name)     # AttributeError: type object 'City' has no attribute 'name'
+city.name = 'Kazan'  # Поле `name` доступно для редактирования
+print(city)          # City(name='Kazan', country='Russia')
+
+# Поле `country` имеет аннотацию и становится атрибутом экземпляра
+print(City.country)  # Russia
+
+# Поле `coordinates` является обычным атрибутом класса без аннотации
+# Его не будет в экземплярах класса, но оно будет доступно как атрибут класса
+print(City.coordinates)  # (35.689722, 139.691667)
+print(city)              # City(name='Kazan', country='Russia')
+print(city.coordinates)  # (35.689722, 139.691667)
+```
