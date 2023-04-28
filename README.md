@@ -278,3 +278,33 @@ print(City._fields)  # ('name', 'country', 'coordinates')
 # _asdict() возвращает все поля в виде словаря
 print(tokyo._asdict())  # {'name': 'Tokyo', 'country': 'Japan', ... }
 ```
+
+### typing.NamedTuple
+```python
+from typing import NamedTuple
+
+class City(NamedTuple):
+    name: str
+    country: str = 'Russia'
+    coordinates = (35.689722, 139.691667)
+
+# NamedTuple не имеет методов, помимо тех, что генерирует collections.namedtuple,
+# а также унаследованных от tuple. Единственное различие -
+# наличие атрибута __annotations__, который возвращает типы всех полей класса.
+print(City.__annotations__)  # {'name': <class 'str'>, 'country': <class 'str'>}
+
+# Поле `name` становится атрибутом экземпляра и для него заводится аннотация
+print(City.name)  # │_tuplegetter(0, 'Alias for field number 0')
+
+# Поле `country` становится атрибутом экземпляра со значением по-умолчанию
+# и для него заводится аннотация
+print(City.country)  # _tuplegetter(1, 'Alias for field number 1')
+
+# Поле `coordinates` является обычным атрибутом класса без аннотации
+print(City.coordinates)  # (35.689722, 139.691667)
+
+# Аттрибуты класса не допускают изменения, так как NamedTuple -
+# это наделённый дополнительными возможностями кортеж
+city = City('Moscow')
+city.name = 'Kazan'  # AttributeError: can't set attribute
+```
