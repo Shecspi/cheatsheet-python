@@ -252,6 +252,102 @@ match area:
 
 ---
 ---
+# Итерируемый объект
+**Итерируемый объект** - это объект, реализующий методы `__iter__` или `__getitem__` (который не рекомендуется к использованию) и возвращающий итератор.  
+**Итератор** - это объект, реализующий методы `__iter__` (возвращает `self`) и `__next__` (возвращает следующий доступный элемент или исключение `StopIteration`.  
+Итераторы очень активно применяются в Python, например, цикл `for` для перебора объектов коллекций взаимодействует не с самим объектом, а с его итератором через неявный вызовом функции `iter()`.
+Реализация аналога цикла `for`:
+```python
+lst = ['value1', 'value2', 'value3']
+
+# Получение итератора от итерируемого объекта
+it = iter(lst)
+    
+while True:
+  try:
+      print(next(it))
+  except StopIteration:
+    del it
+    print('Окончание итерации')
+```
+
+Простой пример реализации итерируемого объекта и итератора:
+```python
+class FindAllWords:
+    """
+    Это итерируемый объект, который создаёт и возвращает итератор.
+    """
+    def __init__(self, text):
+        self.text = text
+        self.words = text.split()
+    
+    def __repr__(self):
+        return f'FindAllWords ("{self.text}")'
+    
+    def __iter__(self):
+        return FindAllWordsIterator(self.words)
+
+
+class FindAllWordsIterator:
+    """
+    Это итератор, возвращающий значения по одному за раз.
+    """
+    def __init__(self, words):
+        self.words = words
+        self.index = 0
+        
+    def __next__(self):
+        try:
+            word = self.words[self.index]
+        except IndexError:
+            raise StopIteration
+        self.index += 1
+        return word
+    
+    def __iter__(self):
+        return self
+
+
+words = FindAllWords("Проверка работы созданного мною кастомного итератора")
+print(words)
+for word in words:
+    print(word)
+```
+Такого же результата можно добиться с помощью ключевого слова `yield`, благодаря чему код сократиться и не будет необходимости отдельно описывать итератор.
+```python
+class FindAllWords:
+    def __init__(self, text):
+        self.text = text
+        self.words = text.split()
+    
+    def __repr__(self):
+        return f'FindAllWords ("{self.text}")'
+    
+    def __iter__(self):
+        """
+        Метод __init__ является генераторной функцией,
+        которая возвращает значения по одному за раз.
+        Поэтому результат получается аналогичным первому примеру
+        с отдельной реализацией итерируемого объекта и итератора.
+        """
+        for word in self.words:
+            yield word
+
+
+words = FindAllWords("Проверка работы созданного мною кастомного итератора")
+print(words)
+for word in words:
+    print(word)
+```
+Метод `__iter__` можно ещё сократить, используя `iter()`, который возвращает итератор переданного ему объекта.  
+А также возвожно использовать конструкцию `yield from`.
+```python
+def __iter__(self):
+  return iter(self.words)
+# Или
+def __iter__(self):
+  yield from self.words
+```
 
 # Менеджеры контекста
 Менеджер контекста - это объект, реализующий dunder-методы `__enter__()` и `__exit__()`, выполнение которых гарантируется вне зависимости от исполняемого кода (даже в случае исключения). Менеджеры контекста являются упрощением конструкции `try/finally`. Контекстные методы удобно применять там, где необходимо выполнить какое-либо действие вне зависимости от результата выполнения программы (например, закрыть файл или базу данных).
